@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신나고 즐거운 음악시간 - 오리엔테이션</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Nanum+Pen+Script&family=Hi+Melody&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Orientation Container -->
+    <div id="orientation-container">
+
+        <!-- Floating Music Notes Decoration -->
+        <div class="floating-notes">
+            <span class="note note-1">♪</span>
+            <span class="note note-2">♫</span>
+            <span class="note note-3">♩</span>
+            <span class="note note-4">♬</span>
+            <span class="note note-5">𝄞</span>
+            <span class="note note-6">♭</span>
+            <span class="note note-7">♯</span>
+            <span class="note note-8">𝄢</span>
+            <span class="note note-9">♪</span>
+            <span class="note note-10">♫</span>
+            <span class="note note-11">𝄐</span>
+            <span class="note note-12">♬</span>
+        </div>
+
+        <!-- Mouse Following Notes (Dynamic JS) -->
+        <div id="mouse-effect-container"></div>
+
+        <!-- Top Navigation Bar -->
+        <nav class="top-nav">
+            <ul class="nav-list font-serif">
+                <li class="nav-item active" onclick="goToSlide(0)">홈</li>
+                <li class="nav-item" onclick="goToSlide(1)">선생님 소개</li>
+                <li class="nav-item" onclick="goToSlide(2)">수업 미리보기</li>
+                <li class="nav-item" onclick="goToSlide(3)">수행평가 안내</li>
+                <li class="nav-item" onclick="startSurvey()">나의 음악 이력서 작성</li>
+            </ul>
+        </nav>
+
+        <!-- Navigation Arrows -->
+        <button class="nav-arrow prev-arrow" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="nav-arrow next-arrow" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+
+        <!-- Slide Indicators -->
+        <div class="slide-indicators">
+            <span class="indicator active" onclick="goToSlide(0)"></span>
+            <span class="indicator" onclick="goToSlide(1)"></span>
+            <span class="indicator" onclick="goToSlide(2)"></span>
+            <span class="indicator" onclick="goToSlide(3)"></span>
+        </div>
+
+        <div class="carousel-track-container">
+            <div class="carousel-track">
+
+                <!-- Slide 1: Hero -->
+                <!-- Slide 1: Hero (Full Screen) -->
+                <section class="slide active" id="slide-1">
+                    <div class="hero-bg-container">
+                        <img src="./hero-mixed.png" alt="음악실 배경" class="hero-bg-img">
+                        <div class="hero-overlay"></div>
+                    </div>
+                    <div class="hero-content">
+                        <div class="title-decoration">🎵</div>
+                        <h1 class="main-title font-hand-title">신나고 즐거운 음악시간</h1>
+                        <p class="scroll-hint font-hand">화살표를 눌러 넘겨보세요 <i
+                                class="fas fa-hand-point-right bounce-right"></i></p>
+                    </div>
+                </section>
+
+                <!-- Slide 2: Teacher Intro -->
+                <section class="slide" id="slide-2">
+                    <div class="slide-content glass-panel">
+                        <h2 class="slide-title font-serif"><i class="fas fa-user-music"></i> 선생님 소개</h2>
+                        <div class="info-card fade-in">
+                            <div class="teacher-profile-layout">
+                                <div class="teacher-img-box">
+                                    <img src="./hero-piano.png" alt="피아노를 연주하는 아름다운 여성의 뒷모습">
+                                </div>
+                                <div class="teacher-details">
+                                    <div class="detail-item">
+                                        <span class="label font-serif"><i class="fas fa-signature"></i> 이 름</span>
+                                        <span class="value font-serif">임 화 정</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label font-serif"><i class="fas fa-music"></i> 전 공</span>
+                                        <span class="value font-serif">피아노 🎹</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label font-serif"><i class="fas fa-heart"></i> MBTI</span>
+                                        <span class="value font-serif">INFP 💜</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label font-serif"><i class="fas fa-location-dot"></i> 선생님은
+                                            어디에?</span>
+                                        <span class="value font-serif">2층 교무실 or 음악실</span>
+                                    </div>
+                                    <div class="detail-item"
+                                        style="flex-direction: column; align-items: flex-start; gap: 8px;">
+                                        <span class="label font-serif"><i class="fas fa-thumbs-up"></i> 포인트</span>
+                                        <span class="value font-serif"
+                                            style="font-size: 1.15rem; letter-spacing: 1px; line-height: 1.5; color: #5a4b7a;">
+                                            선생님은 <span style="color:var(--primary); font-weight:800;">적극적으로 참여하는
+                                                학생</span>을 칭찬해 ❤️
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 3: Class Progression -->
+                <section class="slide" id="slide-3">
+                    <div class="slide-content glass-panel">
+                        <h2 class="slide-title font-serif"><i class="fas fa-book-open"></i> 음악 수업의 진행</h2>
+                        <div class="cards-grid progression-grid">
+                            <div class="feature-card delay-1">
+                                <div class="card-image-box">
+                                    <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=400&auto=format&fit=crop&q=80"
+                                        alt="노래 부르는 모습">
+                                </div>
+                                <div class="icon-circle"><i class="fas fa-microphone-lines"></i></div>
+                                <h3 class="font-serif">표 현</h3>
+                                <div class="spacer-line"></div>
+                                <p class="font-hand">노래, 악기연주, 작곡 등<br><br>나의 감정을 자유롭게!</p>
+                            </div>
+                            <div class="feature-card delay-2">
+                                <div class="card-image-box">
+                                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&auto=format&fit=crop&q=80"
+                                        alt="헤드셋으로 음악 듣기">
+                                </div>
+                                <div class="icon-circle"><i class="fas fa-compact-disc"></i></div>
+                                <h3 class="font-serif">감 상</h3>
+                                <div class="spacer-line"></div>
+                                <p class="font-hand">클래식, 국악, 대중음악 등<br><br>다양한 음악의 세계로!</p>
+                            </div>
+                            <div class="feature-card delay-3">
+                                <div class="card-image-box">
+                                    <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=400&auto=format&fit=crop&q=80"
+                                        alt="음악을 들으며 신나게 춤추는 모습">
+                                </div>
+                                <div class="icon-circle"><i class="fas fa-heart"></i></div>
+                                <h3 class="font-serif">생 활 화</h3>
+                                <div class="spacer-line"></div>
+                                <p class="font-hand">다양한 음악적 경험을 통해<br>생활 속에서 음악 즐기기</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 4: Evaluation -->
+                <section class="slide" id="slide-4">
+                    <div class="slide-content glass-panel">
+                        <h2 class="slide-title font-serif"><i class="fas fa-clipboard-check"></i> 2026학년도 1학기 수행평가</h2>
+                        <div class="eval-grid">
+                            <!-- Eval 1 -->
+                            <div class="eval-card">
+                                <div class="eval-img-box">
+                                    <img src="./eval-appreciation.png" alt="오케스트라 공연장에서 감상문 작성">
+                                </div>
+                                <div class="eval-text">
+                                    <h4 class="font-serif">음악감상 보고서 작성</h4>
+                                    <div class="progress-container">
+                                        <div class="progress-bar-small" style="width: 20%"></div>
+                                    </div>
+                                    <span class="eval-percent">20%</span>
+                                </div>
+                            </div>
+                            <!-- Eval 2 -->
+                            <div class="eval-card">
+                                <div class="eval-img-box">
+                                    <img src="./eval-minibook.png" alt="손으로 만든 작곡가 미니북">
+                                </div>
+                                <div class="eval-text">
+                                    <h4 class="font-serif">작곡가 미니북 만들기</h4>
+                                    <div class="progress-container">
+                                        <div class="progress-bar-small" style="width: 30%"></div>
+                                    </div>
+                                    <span class="eval-percent">30%</span>
+                                </div>
+                            </div>
+                            <!-- Eval 3 -->
+                            <div class="eval-card highlight-card">
+                                <div class="eval-img-box">
+                                    <img src="./eval-ukulele.png" alt="우쿨렐레 악기">
+                                </div>
+                                <div class="eval-text">
+                                    <h4 class="font-serif">우쿨렐레 연주하며 노래하기</h4>
+                                    <div class="progress-container">
+                                        <div class="progress-bar-small" style="width: 50%"></div>
+                                    </div>
+                                    <span class="eval-percent highlight">50%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="text-align:center; position: relative; z-index: 100; margin-top: 20px;">
+                            <p class="scroll-hint font-hand"
+                                style="font-size: 1.3rem; margin-bottom: 15px; color: var(--primary);">
+                                👇 버튼을 클릭하여 미션 시작! 👇 <i class="fas fa-arrow-down bounce-down"></i>
+                            </p>
+                            <button id="resumeBtn" class="start-quest-btn font-serif" type="button">
+                                🎮 나의 음악 이력서 작성하기 <i class="fas fa-pen-fancy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Gamified Survey Overlay -->
+    <div id="survey-quest" class="hidden">
+        <!-- Decoration BG -->
+        <div class="survey-bg-deco"></div>
+
+        <div class="quest-container">
+            <div class="quest-header">
+                <div class="quest-title font-hand-title">📝 나의 음악 이력서</div>
+                <div class="quest-progress">
+                    <div class="progress-bar-track">
+                        <div class="progress-bar-fill" id="quest-progress-fill" style="width: 8%"></div>
+                    </div>
+                    <span class="level-indicator font-sans">Level <span id="current-level">1</span> / 12</span>
+                </div>
+                <button class="close-quest" onclick="closeSurvey()"><i class="fas fa-times"></i></button>
+            </div>
+
+            <form id="questForm">
+                <!-- Q0: Student Info -->
+                <div class="question-slide active" data-step="0">
+                    <div class="quest-icon">🎫</div>
+                    <h3 class="quest-question font-serif">먼저 나를 소개해 주세요!</h3>
+                    <div class="student-info-grid">
+                        <div class="info-input-group">
+                            <label class="font-sans">학년</label>
+                            <input type="text" name="grade" class="short-input font-hand" placeholder="1">
+                        </div>
+                        <div class="info-input-group">
+                            <label class="font-sans">반</label>
+                            <input type="text" name="class" class="short-input font-hand" placeholder="3">
+                        </div>
+                        <div class="info-input-group">
+                            <label class="font-sans">번호</label>
+                            <input type="text" name="number" class="short-input font-hand" placeholder="15">
+                        </div>
+                        <div class="info-input-group name-input">
+                            <label class="font-sans">이름</label>
+                            <input type="text" name="name" class="line-input font-hand" placeholder="홍길동">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q1 -->
+                <div class="question-slide" data-step="1">
+                    <div class="quest-icon">💖</div>
+                    <h3 class="quest-question font-serif">Q1. 음악 수업이 좋은가요?</h3>
+                    <div class="quest-options vertical">
+                        <label class="q-option">
+                            <input type="radio" name="q1" value="네" onchange="autoNext(1)">
+                            <span class="box font-hand">네! 완전 좋아요 🎵</span>
+                        </label>
+                        <label class="q-option">
+                            <input type="radio" name="q1" value="아니오" onchange="autoNext(1)">
+                            <span class="box font-hand">음... 아직은 잘 모르겠어요 😅</span>
+                        </label>
+                    </div>
+                    <div class="quest-sub">
+                        <label class="sub-label font-sans">그 이유는 무엇인가요?</label>
+                        <textarea name="q1_reason" placeholder="예시: 새로운 노래를 배우는 게 기대돼요!"></textarea>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="question-slide" data-step="2">
+                    <div class="quest-icon">🏫</div>
+                    <h3 class="quest-question font-serif">Q2. 초등학교 음악수업 중 가장 기억에 남는 음악활동은?</h3>
+                    <textarea name="q2" class="big-text font-hand"
+                        placeholder="예시: 학예회에서 친구들과 리코더 합주를 했던 것이 재미있었어요."></textarea>
+                </div>
+
+                <!-- Q3 -->
+                <div class="question-slide" data-step="3">
+                    <div class="quest-icon">🏆</div>
+                    <h3 class="quest-question font-serif">Q3. 나의 음악적 경험 자랑하기</h3>
+                    <p class="quest-desc font-sans">음악회, 대회, 음악 동아리, 방과후 활동 등</p>
+                    <textarea name="q3" class="big-text font-hand"
+                        placeholder="예시: 피아노 학원을 3년 다녔고, 작은 발표회에도 나갔었어요."></textarea>
+                </div>
+
+                <!-- Q4 -->
+                <div class="question-slide" data-step="4">
+                    <div class="quest-icon">🎸</div>
+                    <h3 class="quest-question font-serif">Q4. 배웠거나 다룰 수 있는 악기는?</h3>
+                    <div class="input-with-label">
+                        <label class="font-sans">악기명</label>
+                        <input type="text" name="q4_inst" class="line-input font-hand"
+                            placeholder="예시: 피아노, 바이올린 (없으면 '없음')">
+                    </div>
+                    <div class="input-with-label mt-20">
+                        <label class="font-sans">연주 가능한 곡 또는 배웠던 진도</label>
+                        <textarea name="q4_detail" class="font-hand"
+                            placeholder="예시: 체르니 30번 치고 있어요. / 학교종이 땡땡땡 칠 수 있어요."></textarea>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="question-slide" data-step="5">
+                    <div class="quest-icon">🎧</div>
+                    <h3 class="quest-question font-serif">Q5. 즐겨 듣는 음악 장르는?</h3>
+                    <p class="quest-desc font-sans">클래식, 팝, 가요, 재즈, 트로트 등</p>
+                    <div class="input-with-label">
+                        <label class="font-sans">장르</label>
+                        <input type="text" name="q5_genre" class="line-input font-hand"
+                            placeholder="예시: 케이팝(아이돌), 발라드, 힙합 등">
+                    </div>
+                    <div class="input-with-label mt-20">
+                        <label class="font-sans">이유 (가장 좋아하는 음악의 제목도 적어주세요)</label>
+                        <textarea name="q5_reason" class="font-hand"
+                            placeholder="예시: 뉴진스의 'Hype Boy'를 좋아해요. 들으면 신나거든요!"></textarea>
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="question-slide" data-step="6">
+                    <div class="quest-icon">🎤</div>
+                    <h3 class="quest-question font-serif">Q6. 나의 애창곡은?</h3>
+                    <div class="input-with-label">
+                        <label class="font-sans">곡제목</label>
+                        <input type="text" name="q6_title" class="line-input font-hand"
+                            placeholder="예시: Vibe - 술이야, 아이브 - I AM">
+                    </div>
+                    <div class="input-with-label mt-20">
+                        <label class="font-sans">이유</label>
+                        <textarea name="q6_reason" class="font-hand" placeholder="예시: 고음 지르는 부분이 시원해서 좋아해요."></textarea>
+                    </div>
+                </div>
+
+                <!-- Q7 -->
+                <div class="question-slide" data-step="7">
+                    <div class="quest-icon">📚</div>
+                    <h3 class="quest-question font-serif">Q7. 배우고 싶은 음악 (악기, 노래 등)</h3>
+                    <div class="input-with-label">
+                        <label class="font-sans">악기 또는 곡제목</label>
+                        <input type="text" name="q7_title" class="line-input font-hand" placeholder="예시: 기타, 드럼, 랩 배우기">
+                    </div>
+                    <div class="input-with-label mt-20">
+                        <label class="font-sans">이유 (교과서에 있는 내용도 가능! 교과서 쪽수도 적어주세요~!)</label>
+                        <textarea name="q7_reason" class="font-hand" placeholder="예시: 밴드부 언니 오빠들이 멋있어 보여서요!"></textarea>
+                    </div>
+                </div>
+
+                <!-- Q8 -->
+                <div class="question-slide" data-step="8">
+                    <div class="quest-icon">✨</div>
+                    <h3 class="quest-question font-serif">Q8. 중학교 음악수업에서 기대하는 점</h3>
+                    <p class="quest-desc font-sans">음악수업을 통해 배우고 싶은 것</p>
+                    <textarea name="q8" class="big-text font-hand"
+                        placeholder="예시: 친구들과 합주를 해보고 싶어요. / 수행평가가 너무 어렵지 않았으면 좋겠어요."></textarea>
+                </div>
+
+                <!-- Q9 -->
+                <div class="question-slide" data-step="9">
+                    <div class="quest-icon">🔥</div>
+                    <h3 class="quest-question font-serif">Q9. 음악수업에 임하는 나의 각오</h3>
+                    <textarea name="q9" class="big-text font-hand"
+                        placeholder="예시: 졸지 않고 열심히 참여하겠습니다! 1학기 동안 파이팅!"></textarea>
+                </div>
+
+                <!-- Q10 -->
+                <div class="question-slide" data-step="10">
+                    <div class="quest-icon">💌</div>
+                    <h3 class="quest-question font-serif">Q10. 음악 선생님의 첫인상 또는 하고 싶은 말</h3>
+                    <p class="quest-desc font-sans">바라는 점도 적어주세요!</p>
+                    <textarea name="q10" class="big-text font-hand"
+                        placeholder="예시: 선생님 첫인상이 너무 좋으셔요! 잘 부탁드립니다~ ❤️"></textarea>
+                </div>
+
+                <div class="quest-controls">
+                    <button type="button" id="prev-btn" class="nav-btn secondary font-serif" onclick="prevStep()"
+                        disabled><i class="fas fa-chevron-left"></i> 이전</button>
+                    <button type="button" id="next-btn" class="nav-btn primary font-serif" onclick="nextStep()">다음 <i
+                            class="fas fa-chevron-right"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Completion Modal -->
+    <div id="completion-modal" class="hidden">
+        <div class="modal-content">
+            <div class="confetti-container">
+                <span class="confetti">🎉</span>
+                <span class="confetti">🎊</span>
+                <span class="confetti">🎵</span>
+                <span class="confetti">✨</span>
+            </div>
+            <div class="icon-check"><i class="fas fa-check-circle"></i></div>
+            <h2 class="font-hand-title">제출 완료!</h2>
+            <p class="font-sans">이력서 작성이 끝났습니다.<br>여러분의 이야기를 들려줘서 고마워요! 💜</p>
+            <button class="close-modal-btn font-serif" onclick="location.reload()">처음으로 돌아가기</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
